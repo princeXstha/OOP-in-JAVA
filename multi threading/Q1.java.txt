@@ -1,0 +1,36 @@
+public class Q1{
+	public static void main(String args[]) {
+	multiply t1=new multiply(5);
+	t1.start();
+	try{
+	    t1.join();
+	}
+	catch(InterruptedException e){
+	    System.out.println("interrupted");
+	}
+	multiply t2=new multiply(7);
+	t2.start();
+	try{
+	    t2.join();
+	}
+	catch(InterruptedException e){
+	    System.out.println("interrupted");
+	}
+	}
+}
+class multiply extends Thread{
+	int i,n;
+	multiply (int num){
+		n=num;
+	}
+	public void run(){
+		for(i=1;i<=10;i++){
+			System.out.println(n+" * "+i+" = "+n*i);
+			try{
+			    Thread.sleep(500);}
+			    catch(InterruptedException e){
+			        System.out.println("interrupted");
+			}
+		}
+	}
+}
